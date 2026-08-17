@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow - Mis tareas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-page">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">✓</span>
+        <h1>TaskFlow</h1>
+      </div>
+      <div class="user-info">
+        <span id="userNameLabel"></span>
+        <button id="logoutBtn" class="btn-secondary">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- Formulario para crear tarea -->
+      <section class="card new-task-card">
+        <h2>Nueva tarea</h2>
+        <form id="taskForm" class="task-form">
+          <input type="text" id="taskTitle" placeholder="Título de la tarea" required>
+          <textarea id="taskDescription" placeholder="Descripción (opcional)"></textarea>
+          <div class="task-form-row">
+            <select id="taskPriority">
+              <option value="baja">Prioridad baja</option>
+              <option value="media" selected>Prioridad media</option>
+              <option value="alta">Prioridad alta</option>
+            </select>
+            <input type="date" id="taskDueDate">
+            <button type="submit" class="btn-primary">Agregar tarea</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Filtros -->
+      <section class="filters-bar">
+        <div class="filter-group">
+          <label for="filterStatus">Estado:</label>
+          <select id="filterStatus">
+            <option value="">Todas</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="completada">Completadas</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filterSort">Ordenar por:</label>
+          <select id="filterSort">
+            <option value="">Más recientes</option>
+            <option value="dueDate">Fecha límite</option>
+            <option value="priority">Prioridad</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Lista de tareas -->
+      <section class="tasks-section">
+        <p id="taskListMessage" class="form-message"></p>
+        <ul id="taskList" class="task-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="tasks.js"></script>
+</body>
+</html>
