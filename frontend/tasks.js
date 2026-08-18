@@ -84,7 +84,9 @@ async function loadTasks() {
 // ---------- RENDERIZAR UNA TAREA ----------
 function renderTask(task) {
   const li = document.createElement("li");
-  li.className = `task-item priority-${task.priority || "media"} ${task.status === "completada" ? "completada" : ""}`;
+
+  const isOverdue = task.dueDate && task.status !== "completada" && new Date(task.dueDate) < new Date();
+  li.className = `task-item priority-${task.priority || "media"} ${task.status === "completada" ? "completada" : ""} ${isOverdue ? "vencida" : ""}`;
 
   const dueDateText = formatDate(task.dueDate);
 
@@ -96,6 +98,7 @@ function renderTask(task) {
         <span class="badge priority-${task.priority || "media"}">${task.priority || "media"}</span>
         ${dueDateText ? `<span>📅 ${dueDateText}</span>` : ""}
         <span>${task.status === "completada" ? "✅ Completada" : "🕓 Pendiente"}</span>
+        ${isOverdue ? `<span>⚠️ Vencida</span>` : ""}
       </div>
     </div>
     <div class="task-actions">

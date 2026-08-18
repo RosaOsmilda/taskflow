@@ -345,3 +345,7 @@ body {
   .task-actions { flex-direction: row; width: 100%; }
   .task-actions button { flex: 1; }
 }
+.task-item.vencida {
+  border-left: 4px solid #e53935;
+  background-color: #ffebee;
+}

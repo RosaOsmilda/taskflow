@@ -22,17 +22,18 @@ router.get("/", async (req, res) => {
     const tasks = await Task.find(query).sort(sortOption);
     return res.json(tasks);
   } catch (err) {
+    console.error(err);
     return res.status(500).json({ error: "Error al obtener tareas" });
   }
 });
 
-// POST /tasks -> crea tarea (HU-03), incluye prioridad y fecha lÃ­mite (HU-07)
+// POST /tasks -> crea tarea (HU-03), incluye prioridad y fecha límite (HU-07)
 router.post("/", async (req, res) => {
   try {
     const { title, description, priority, dueDate } = req.body;
 
     if (!title) {
-      return res.status(400).json({ error: "El tÃ­tulo es obligatorio" });
+      return res.status(400).json({ error: "El título es obligatorio" });
     }
 
     const task = await Task.create({
